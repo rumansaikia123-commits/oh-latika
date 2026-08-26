@@ -927,15 +927,52 @@
 
     function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      let ok = true;
-      if(!nameInput.value.trim()){ nameError.classList.add('show'); ok = false; } else { nameError.classList.remove('show'); }
-      if(!validEmail(emailInput.value.trim())){ emailError.classList.add('show'); ok = false; } else { emailError.classList.remove('show'); }
-      if(!ok) return;
-      form.style.display = 'none';
-      success.classList.add('show');
-    });
+    form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+
+    let ok = true;
+
+    if(!nameInput.value.trim()){
+        nameError.classList.add('show');
+        ok = false;
+    } else {
+        nameError.classList.remove('show');
+    }
+
+    if(!validEmail(emailInput.value.trim())){
+        emailError.classList.add('show');
+        ok = false;
+    } else {
+        emailError.classList.remove('show');
+    }
+
+    if(!ok) return;
+
+    try {
+        const response = await fetch('https://oh-latika-api.rumansaikia123.workers.dev/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: emailInput.value.trim()
+            })
+        });
+
+        const result = await response.json();
+
+        if(!response.ok || !result.success){
+            throw new Error(result.message || 'Signup failed');
+        }
+
+        form.style.display = 'none';
+        success.classList.add('show');
+
+    } catch(error) {
+        console.error('Signup error:', error);
+        alert('Something went wrong. Please try again.');
+    }
+});
 
     /* ---------- story modal ---------- */
     const storyOverlay = document.getElementById('storyModalOverlay');
