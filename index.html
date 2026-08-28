@@ -623,23 +623,22 @@
   @media (max-width: 480px){
     body{ font-size:16.5px; }
     .hero-mark{ font-size:clamp(40px,13vw,54px); }
-    /* ================= PRODUCT PAGE ================= */
+   /* ================= APPAREL PRODUCT LAYOUT ================= */
 
 .product-page{
   max-width:1200px;
   margin:0 auto;
-  padding:70px 48px 100px;
-}
-
-.product-page > section{
-  width:100%;
-}
-
-.product-gallery{
+  padding:70px 48px 110px;
   display:grid;
-  grid-template-columns:minmax(0, 1.15fr) minmax(360px, .85fr);
+  grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);
   gap:70px;
   align-items:start;
+}
+
+/* PRODUCT IMAGE */
+
+.product-gallery{
+  min-width:0;
 }
 
 .product-main-image{
@@ -655,10 +654,10 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:14px;
+  color:#8c8172;
+  font-size:13px;
   letter-spacing:.08em;
   text-transform:uppercase;
-  color:#8b8174;
 }
 
 .product-thumbnails{
@@ -674,8 +673,8 @@
   display:flex;
   align-items:center;
   justify-content:center;
+  color:#8c8172;
   font-size:11px;
-  color:#8b8174;
 }
 
 .product-thumb.active{
@@ -683,55 +682,63 @@
   outline-offset:2px;
 }
 
+/* PRODUCT INFORMATION */
+
 .product-info{
-  padding-top:5px;
+  min-width:0;
   max-width:500px;
+  padding-top:4px;
 }
 
-.product-info h1{
-  margin:0 0 10px;
-  font-size:clamp(38px,4vw,58px);
+.product-info > h1{
+  margin:0 0 12px;
+  font-size:clamp(40px,4.5vw,58px);
   line-height:1.05;
   font-weight:400;
 }
 
+.product-price{
+  margin:0 0 14px;
+  font-size:22px;
+  line-height:1.4;
+}
+
+.product-tagline{
+  margin:0 0 34px;
+  font-size:13px;
+  line-height:1.7;
+  letter-spacing:.04em;
+}
+
+/* ORGANISE THE LONG INFORMATION */
+
 .product-info h2{
-  margin:42px 0 14px;
-  font-size:18px;
-  letter-spacing:.08em;
+  margin:38px 0 14px;
+  font-size:16px;
+  line-height:1.4;
+  letter-spacing:.12em;
   text-transform:uppercase;
   font-weight:500;
 }
 
-.product-price{
-  margin:0 0 12px;
-  font-size:22px;
-  font-weight:500;
-}
-
-.product-tagline{
-  margin:0 0 32px;
-  font-size:14px;
-  line-height:1.8;
-  letter-spacing:.03em;
-}
-
 .product-info p{
-  max-width:520px;
+  margin:0 0 18px;
   font-size:15px;
   line-height:1.8;
-  margin:0 0 20px;
 }
 
 .product-info ul{
-  margin:0;
+  margin:0 0 22px;
   padding-left:20px;
 }
 
 .product-info li{
-  margin-bottom:9px;
+  margin-bottom:8px;
+  font-size:14px;
   line-height:1.6;
 }
+
+/* ACTIONS */
 
 .product-actions{
   display:flex;
@@ -744,19 +751,13 @@
   min-height:50px;
 }
 
-/* Keep the long product information visually organised */
-.product-info strong{
-  font-weight:600;
-}
+/* MOBILE */
 
 @media (max-width:900px){
   .product-page{
-    padding:50px 28px 80px;
-  }
-
-  .product-gallery{
     grid-template-columns:1fr;
-    gap:42px;
+    gap:45px;
+    padding:50px 28px 80px;
   }
 
   .product-info{
@@ -769,7 +770,7 @@
     padding:35px 20px 60px;
   }
 
-  .product-info h1{
+  .product-info > h1{
     font-size:38px;
   }
 
@@ -782,7 +783,6 @@
     height:76px;
   }
 }
-  }
 </style>
 </head>
 <body>
