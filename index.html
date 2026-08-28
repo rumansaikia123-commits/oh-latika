@@ -624,24 +624,28 @@
     body{ font-size:16.5px; }
     .hero-mark{ font-size:clamp(40px,13vw,54px); }
  }
-    /* ================= APPAREL PRODUCT PAGE ================= */
+ /* ================= APPAREL PRODUCT PAGE ================= */
 
 .product-page{
-  max-width:1200px;
+  max-width:1280px;
   margin:0 auto;
-  padding:72px 48px 110px;
+  padding:90px 48px 110px;
 }
 
 .product-page > section{
   width:100%;
 }
 
-/* MAIN PRODUCT LAYOUT */
+/* PRODUCT LAYOUT */
 
-.product-page .product-gallery{
+.product-page .product-page{
+  display:block;
+}
+
+.product-gallery{
   display:grid;
-  grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);
-  gap:72px;
+  grid-template-columns:minmax(0,1.25fr) minmax(360px,.75fr);
+  gap:70px;
   align-items:start;
 }
 
@@ -666,8 +670,6 @@
   text-transform:uppercase;
 }
 
-/* THUMBNAILS */
-
 .product-thumbnails{
   display:flex;
   gap:10px;
@@ -675,8 +677,8 @@
 }
 
 .product-thumb{
-  width:68px;
-  height:84px;
+  width:72px;
+  height:88px;
   background:#eee7d9;
   display:flex;
   align-items:center;
@@ -686,36 +688,36 @@
 }
 
 .product-thumb.active{
-  outline:1px solid #cda879;
+  outline:1px solid currentColor;
   outline-offset:2px;
 }
 
 /* PRODUCT DETAILS */
 
 .product-details{
-  padding-top:4px;
   max-width:500px;
+  padding-top:8px;
 }
 
 .product-details .eyebrow{
   display:block;
-  margin-bottom:14px;
+  margin-bottom:16px;
 }
 
 .product-details h1{
   margin:0 0 14px;
-  font-size:clamp(40px,4.5vw,58px);
+  font-size:clamp(40px,4vw,58px);
   line-height:1.05;
   font-weight:400;
 }
 
-.product-details .product-price{
+.product-price{
   margin:0 0 14px;
   font-size:22px;
   line-height:1.4;
 }
 
-.product-details .product-subline{
+.product-subline{
   margin:0 0 34px;
   font-size:13px;
   line-height:1.7;
@@ -723,10 +725,6 @@
 }
 
 /* SHORT STORY */
-
-.product-story{
-  margin-bottom:34px;
-}
 
 .product-story h2{
   margin:0 0 14px;
@@ -738,7 +736,7 @@
 }
 
 .product-story p{
-  margin:0;
+  margin:0 0 18px;
   font-size:15px;
   line-height:1.8;
 }
@@ -748,41 +746,39 @@
 }
 
 .read-more-btn{
-  margin-top:14px;
+  margin-top:2px;
   padding:0;
   border:0;
   background:none;
-  font-family:inherit;
-  font-size:13px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
+  font:inherit;
+  text-decoration:underline;
   cursor:pointer;
 }
 
-/* PRODUCT SPECIFICATIONS */
+/* PRODUCT SPECS */
 
 .product-specs{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:24px 36px;
-  padding:26px 0;
-  border-top:1px solid rgba(140,129,114,.25);
-  border-bottom:1px solid rgba(140,129,114,.25);
+  gap:22px 35px;
+  margin-top:42px;
+  padding-top:28px;
+  border-top:1px solid rgba(80,60,40,.18);
 }
 
 .product-specs .spec{
-  margin:0;
+  min-width:0;
 }
 
-.product-specs .spec-label{
+.spec-label{
   display:block;
-  margin-bottom:7px;
+  margin-bottom:8px;
   font-size:11px;
-  letter-spacing:.12em;
+  letter-spacing:.14em;
   text-transform:uppercase;
 }
 
-.product-specs .spec p{
+.product-specs p{
   margin:0;
   font-size:14px;
   line-height:1.6;
@@ -791,7 +787,7 @@
 /* SIZE SELECTOR */
 
 .size-section{
-  margin-top:30px;
+  margin-top:40px;
 }
 
 .size-heading{
@@ -803,35 +799,36 @@
 
 .size-heading span{
   font-size:11px;
-  letter-spacing:.12em;
+  letter-spacing:.14em;
   text-transform:uppercase;
 }
 
 .size-guide{
   font-size:12px;
   text-decoration:underline;
-  text-underline-offset:3px;
 }
 
 .size-options{
   display:flex;
-  gap:9px;
   flex-wrap:wrap;
+  gap:9px;
 }
 
 .size-options button{
-  width:48px;
-  height:46px;
-  border:1px solid #cda879;
+  width:54px;
+  height:48px;
+  border:1px solid rgba(150,110,55,.45);
   background:transparent;
   color:inherit;
-  font-family:inherit;
+  font:inherit;
   cursor:pointer;
-  font-size:12px;
+  transition:.2s ease;
 }
 
-.size-options button:hover{
-  background:#eee7d9;
+.size-options button:hover,
+.size-options button.active{
+  background:#3e3027;
+  color:#f5efe2;
 }
 
 /* PRODUCT ACTIONS */
@@ -839,31 +836,32 @@
 .product-actions{
   display:flex;
   gap:12px;
-  margin-top:30px;
+  margin-top:32px;
 }
 
-.product-actions .product-btn{
+.product-btn{
   flex:1;
   min-height:52px;
-  border:1px solid #cda879;
+  padding:14px 20px;
+  border:1px solid #3e3027;
   background:transparent;
-  color:inherit;
-  font-family:inherit;
+  color:#3e3027;
+  font:inherit;
   letter-spacing:.08em;
   text-transform:uppercase;
-  font-size:11px;
   cursor:pointer;
 }
 
-.product-actions .cart-btn{
-  background:#cda879;
-  color:#fff;
+.product-btn.cart-btn{
+  background:#3e3027;
+  color:#f5efe2;
 }
 
-.product-actions .product-btn:hover{
-  opacity:.85;
+.product-btn:hover{
+  opacity:.88;
 }
 
+/* ================= END APPAREL PRODUCT PAGE ================= */
 /* MOBILE */
 
 @media (max-width:900px){
