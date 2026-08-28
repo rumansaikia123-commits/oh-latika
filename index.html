@@ -694,15 +694,28 @@
   font-weight:500;
   color:var(--chocolate);
 }
-.product-card-sub{
-  margin-top:4px;
-  font-size:12px;
-  letter-spacing:.03em;
-  color:rgba(42,24,16,.62);
-}
 .product-card-price{
-  margin-top:8px;
+  margin-top:6px;
   font-size:15px;
+  color:var(--espresso);
+}
+.product-card-sizes{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:12px;
+}
+.product-card-size{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:30px;
+  height:26px;
+  padding:0 6px;
+  border:1px solid rgba(150,110,55,.45);
+  font-family:'Marcellus', serif;
+  font-size:10.5px;
+  letter-spacing:.04em;
   color:var(--espresso);
 }
 
@@ -1129,7 +1142,6 @@
       <div class="collection-head reveal">
         <span class="eyebrow">The Collection</span>
         <h1>Apparel</h1>
-        <p>Handcrafted in Jaipur. 100% pure cotton, hand block printed, and made to be worn on the ordinary days that deserve a little softness.</p>
       </div>
       <div class="product-grid reveal" id="product-grid"></div>
     </section>
@@ -1387,11 +1399,12 @@
       const grid = document.getElementById('product-grid');
       grid.innerHTML = PRODUCT_ORDER.map(function(slug){
         const p = PRODUCTS[slug];
+        const sizesHtml = p.sizes.map(function(s){ return '<span class="product-card-size">' + s + '</span>'; }).join('');
         return '<button type="button" class="product-card" data-slug="' + slug + '">' +
           '<div class="product-card-image"><img src="' + p.images[0] + '" alt="' + p.name + '"></div>' +
           '<div class="product-card-name">' + p.name + '</div>' +
-          '<div class="product-card-sub">' + p.subline + '</div>' +
           '<div class="product-card-price">' + p.price + '</div>' +
+          '<div class="product-card-sizes">' + sizesHtml + '</div>' +
         '</button>';
       }).join('');
     }
