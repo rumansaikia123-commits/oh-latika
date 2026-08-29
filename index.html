@@ -1051,7 +1051,7 @@
   <div class="nav-right">
     <div class="nav-links">
   <a href="#" class="nav-link" data-page="home">Home</a>
-  <a href="#apparel" class="nav-link" data-page="apparel">Apparel</a>
+  <a href="#apparel" class="nav-link" data-page="apparel">Collections</a>
   <a href="#story" class="nav-link js-open-story" data-page="story">Our Story</a>
   <button type="button" class="nav-tag js-open-modal">Be the first to know</button>
 </div>
@@ -1063,7 +1063,7 @@
 
 <div class="mobile-menu">
   <a href="#" class="nav-link" data-page="home">Home</a>
-  <a href="#apparel" class="nav-link" data-page="apparel">Apparel</a>
+  <a href="#apparel" class="nav-link" data-page="apparel">Collections</a>
   <a href="#story" class="nav-link js-open-story" data-page="story">Our Story</a>
   <button type="button" class="nav-tag js-open-modal">Be the first to know</button>
 </div>
@@ -1116,7 +1116,7 @@
     <section class="collection-page">
       <div class="collection-head reveal">
         <span class="eyebrow">The Collection</span>
-        <h1>Apparel</h1>
+        <h1>Collections</h1>
       </div>
       <div class="product-grid reveal" id="product-grid"></div>
     </section>
@@ -1126,7 +1126,7 @@
   <div class="apparel-view" id="apparel-product">
     <section class="product-page">
 
-      <button type="button" class="product-breadcrumb" id="backToCollection">← Back to Collection</button>
+      <button type="button" class="product-breadcrumb" id="backToCollection">← Back to Collections</button>
 
       <section class="product-gallery reveal">
 
@@ -1276,6 +1276,7 @@
   <div class="nav-mark">Oh <span class="devanagari">लतिका</span></div>
   <div class="foot-links">
     <button type="button" class="nav-link" data-page="home">Home</button>
+    <button type="button" class="nav-link" data-page="apparel">Collections</button>
     <button type="button" class="nav-link js-open-story" data-page="story">Our Story</button>
     <a href="https://www.instagram.com/oh.latika/" target="_blank" rel="noopener">@oh.latika</a>
   </div>
@@ -1477,9 +1478,19 @@
     function parseHash(){
       const raw = location.hash.replace('#','');
       if(raw === 'story') return { page:'story' };
-      if(raw === 'apparel') return { page:'apparel', mode:'collection' };
+      if(raw === 'apparel' || raw === 'collections' || raw === 'collection') return { page:'apparel', mode:'collection' };
       if(raw.indexOf('apparel/') === 0){
         const slug = decodeURIComponent(raw.slice('apparel/'.length));
+        if(PRODUCTS[slug]) return { page:'apparel', mode:'product', slug:slug };
+        return { page:'apparel', mode:'collection' };
+      }
+      if(raw.indexOf('collections/') === 0){
+        const slug = decodeURIComponent(raw.slice('collections/'.length));
+        if(PRODUCTS[slug]) return { page:'apparel', mode:'product', slug:slug };
+        return { page:'apparel', mode:'collection' };
+      }
+      if(raw.indexOf('collection/') === 0){
+        const slug = decodeURIComponent(raw.slice('collection/'.length));
         if(PRODUCTS[slug]) return { page:'apparel', mode:'product', slug:slug };
         return { page:'apparel', mode:'collection' };
       }
